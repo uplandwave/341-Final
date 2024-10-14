@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "B&V-Car-Shop",
-    "description": "B&V-Car-Shop",
+    "title": "CSE 341 Final Project - API",
+    "description": "CSE 341 Final Project for Tiffany Voorhees and Luke Briggs",
     "version": "1.0.0"
   },
   "host": "localhost:3001",
@@ -21,39 +21,94 @@
         }
       }
     },
-    "/guns/": {
+    "/api-docs": {
       "get": {
         "description": "",
         "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/cars/": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
+        "tags": [
+          "Cars"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create a new Car",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "model": {
+                  "type": "string",
+                  "example": "Ferrari Test"
+                },
+                "year": {
+                  "type": "number",
+                  "example": 2024
+                },
+                "engine": {
+                  "type": "string",
+                  "example": "3.9L V8"
+                },
+                "horsepower": {
+                  "type": "number",
+                  "example": 661
+                },
+                "top_speed": {
+                  "type": "string",
+                  "example": "205 mph"
+                }
+              }
+            }
+          },
+          {
+            "name": "carImageFile",
+            "in": "formData",
+            "description": "Car Image file to upload",
+            "required": true,
+            "type": "file"
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/guns/{id}": {
+    "/cars/{carId}": {
       "get": {
+        "tags": [
+          "Cars"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
-            "name": "id",
+            "name": "carId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -65,154 +120,76 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Cars"
+        ],
+        "description": "Change Isaac gave me cash to Alex gave me cash",
         "parameters": [
           {
-            "name": "id",
+            "name": "carId",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create a new Car",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accountName": {
+                  "type": "string",
+                  "example": "Cash"
+                },
+                "carAmount": {
+                  "type": "number",
+                  "example": 5
+                },
+                "carDate": {
+                  "type": "string",
+                  "example": "2024-10-03T00:00:00.000Z"
+                },
+                "carDescription": {
+                  "type": "string",
+                  "example": "Alex gave me cash"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          "202": {
+            "description": "Accepted"
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Cars"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "carId",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/suppressors/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/suppressors/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
