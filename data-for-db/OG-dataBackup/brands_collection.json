@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "670febee2c904f621ec06b0b"
+  },
+  "brandName": "Ferrari"
+},
+{
+  "_id": {
+    "$oid": "670fece02c904f621ec06b0f"
+  },
+  "brandName": "Porsche"
+},
+{
+  "_id": {
+    "$oid": "670fed342c904f621ec06b10"
+  },
+  "brandName": "Ford"
+}]

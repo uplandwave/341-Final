@@ -21,10 +21,12 @@
   "homepage": "https://github.com/uplandwave/341-Final#readme",
   "dependencies": {
     "body-parser": "^1.20.3",
+    "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "joi": "^17.13.3",
     "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1"
   },
