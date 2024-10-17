@@ -50,6 +50,7 @@ const addNew = async (req, res, next) => {
       in: 'body',
       description: 'Create a new Car',
       schema: {
+        brandName: 'Ferrari',
         model: 'Ferrari Test',
         year: 2024,
         engine: '3.9L V8',
@@ -94,6 +95,7 @@ const editSingle = async (req, res, next) => {
       in: 'body',
       description: 'Create a new Car',
       schema: {
+        brandName: 'Ferrari',
         model: 'Ferrari Testing',
         year: 2024,
         engine: '3.9L V8',

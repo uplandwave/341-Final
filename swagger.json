@@ -8,7 +8,7 @@
   "host": "localhost:3001",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -59,6 +59,10 @@
             "schema": {
               "type": "object",
               "properties": {
+                "brandName": {
+                  "type": "string",
+                  "example": "Ferrari"
+                },
                 "model": {
                   "type": "string",
                   "example": "Ferrari Test"
@@ -127,7 +131,7 @@
         "tags": [
           "Cars"
         ],
-        "description": "Change Isaac gave me cash to Alex gave me cash",
+        "description": "Change model to Ferrari Testing instead of Ferrari Test and top_speed to 300 mph instead of 205 mph",
         "parameters": [
           {
             "name": "carId",
@@ -142,21 +146,29 @@
             "schema": {
               "type": "object",
               "properties": {
-                "accountName": {
+                "brandName": {
                   "type": "string",
-                  "example": "Cash"
+                  "example": "Ferrari"
                 },
-                "carAmount": {
+                "model": {
+                  "type": "string",
+                  "example": "Ferrari Testing"
+                },
+                "year": {
                   "type": "number",
-                  "example": 5
+                  "example": 2024
                 },
-                "carDate": {
+                "engine": {
                   "type": "string",
-                  "example": "2024-10-03T00:00:00.000Z"
+                  "example": "3.9L V8"
                 },
-                "carDescription": {
+                "horsepower": {
+                  "type": "number",
+                  "example": 661
+                },
+                "top_speed": {
                   "type": "string",
-                  "example": "Alex gave me cash"
+                  "example": "300 mph"
                 }
               }
             }
