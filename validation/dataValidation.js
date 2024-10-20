@@ -1,5 +1,24 @@
 const Joi = require('joi');
 
+const ferrariValidationSchema = Joi.object({
+    model: Joi.string().min(1).max(100).required(),
+    year: Joi.number().integer().positive().required(),
+    engine: Joi.string().min(1).max(100).required(),
+    horsepower: Joi.number().integer().positive().required(),
+    top_speed: Joi.string().min(1).max(50).required(),
+    image: Joi.string().min(1).max(50).required()
+});
+
+const fordValidationSchema = Joi.object({
+    model: Joi.string().min(1).max(100).required(),
+    year: Joi.number().integer().positive().required(),
+    engine: Joi.string().min(1).max(100).required(),
+    horsepower: Joi.number().integer().positive().required(),
+    top_speed: Joi.string().min(1).max(50).required(),
+    image: Joi.string().min(1).max(50).required()
+});
+
+module.exports = {ferrariValidationSchema, fordValidationSchema}
 
 
 

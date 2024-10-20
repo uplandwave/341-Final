@@ -2,46 +2,38 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const connectDB = require('./data/database');
+const mongodb = require('./data/database');
+const cors = require('cors');
 const app = express();
 
 // Load Config
 dotenv.config({ path: './.env' });
 
-connectDB();
+
+// connectDB();
 
 const port = process.env.PORT || 3001;
 
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, DELETE, OPTIONS'
-  );
-  next();
-});
+
+// Enable CORS for all routes (you can restrict this as needed)
+app.use(cors()); 
+
+app.use('/api-docs', cors(), require('./routes/swagger'));
 
 app.use('/', require('./routes'));
 
-app.listen(port, () => {
-  console.log(`Listening on port: ${port}`);
-});
 
-// mongodb.initDb((err) => {
-//     if(err) {
-//         console.log(err);
-//     }
-//     else{
-//         app.listen(port, () => {
-//             console.log(`Database: \x1b[32mCONNECTED\x1b[0m - Node: \x1b[32mRUNNING\x1b[0m - Listening: \x1b[32mPort:${port}\x1b[0m`);
-//             console.log(`\x1b[94mRoutes available: \x1b[0m`);
-//             console.log(`\x1b[32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\x1b[0m`);
-//             console.log(`\n`);
-//           });
-//     }
-// })
+mongodb.initDb((err) => {
+  if(err) {
+      console.log(err);
+  }
+  else{
+    app.listen(port, () => {
+      console.log(`App listening on http://localhost:${port}`);
+    });
+  }
+})
+

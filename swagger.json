@@ -8,7 +8,7 @@
   "host": "localhost:3001",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
@@ -21,98 +21,139 @@
         }
       }
     },
-    "/api-docs": {
+    "/ferrari/": {
       "get": {
         "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/cars/": {
-      "get": {
-        "tags": [
-          "Cars"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "tags": [
-          "Cars"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "description": "Create a new Car",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "brandName": {
+                "type": {
                   "type": "string",
-                  "example": "Ferrari"
+                  "example": "object"
                 },
-                "model": {
-                  "type": "string",
-                  "example": "Ferrari Test"
-                },
-                "year": {
-                  "type": "number",
-                  "example": 2024
-                },
-                "engine": {
-                  "type": "string",
-                  "example": "3.9L V8"
-                },
-                "horsepower": {
-                  "type": "number",
-                  "example": 661
-                },
-                "top_speed": {
-                  "type": "string",
-                  "example": "205 mph"
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Ferrari 488 GTB"
+                        }
+                      }
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 2024
+                        }
+                      }
+                    },
+                    "engine": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "3.9L V8"
+                        }
+                      }
+                    },
+                    "horsepower": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 661
+                        }
+                      }
+                    },
+                    "top_speed": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "205 mph"
+                        }
+                      }
+                    },
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "https://example.com/ferrari_488_gtb.jpg"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
-          },
-          {
-            "name": "carImageFile",
-            "in": "formData",
-            "description": "Car Image file to upload",
-            "required": true,
-            "type": "file"
           }
         ],
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/cars/{carId}": {
+    "/ferrari/{id}": {
       "get": {
-        "tags": [
-          "Cars"
-        ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
-            "name": "carId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -124,17 +165,17 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": [
-          "Cars"
-        ],
-        "description": "Change model to Ferrari Testing instead of Ferrari Test and top_speed to 300 mph instead of 205 mph",
+        "description": "",
         "parameters": [
           {
-            "name": "carId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -143,65 +184,431 @@
             "name": "body",
             "in": "body",
             "description": "Create a new Car",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "brandName": {
+                "type": {
                   "type": "string",
-                  "example": "Ferrari"
+                  "example": "object"
                 },
-                "model": {
-                  "type": "string",
-                  "example": "Ferrari Testing"
-                },
-                "year": {
-                  "type": "number",
-                  "example": 2024
-                },
-                "engine": {
-                  "type": "string",
-                  "example": "3.9L V8"
-                },
-                "horsepower": {
-                  "type": "number",
-                  "example": 661
-                },
-                "top_speed": {
-                  "type": "string",
-                  "example": "300 mph"
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Ferrari 488 GTB"
+                        }
+                      }
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 2024
+                        }
+                      }
+                    },
+                    "engine": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "3.9L V8"
+                        }
+                      }
+                    },
+                    "horsepower": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 661
+                        }
+                      }
+                    },
+                    "top_speed": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "205 mph"
+                        }
+                      }
+                    },
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "https://example.com/ferrari_488_gtb.jpg"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         ],
         "responses": {
-          "202": {
-            "description": "Accepted"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "tags": [
-          "Cars"
-        ],
         "description": "",
         "parameters": [
           {
-            "name": "carId",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ford/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create a new Car",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Ford 488 GTB"
+                        }
+                      }
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 2024
+                        }
+                      }
+                    },
+                    "engine": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "3.9L V8"
+                        }
+                      }
+                    },
+                    "horsepower": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 661
+                        }
+                      }
+                    },
+                    "top_speed": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "205 mph"
+                        }
+                      }
+                    },
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "https://example.com/ford_488_gtb.jpg"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ford/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create a new Car",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "model": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "Ford 488 GTB"
+                        }
+                      }
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 2024
+                        }
+                      }
+                    },
+                    "engine": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "3.9L V8"
+                        }
+                      }
+                    },
+                    "horsepower": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        },
+                        "example": {
+                          "type": "number",
+                          "example": 661
+                        }
+                      }
+                    },
+                    "top_speed": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "205 mph"
+                        }
+                      }
+                    },
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "https://example.com/ford_488_gtb.jpg"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
