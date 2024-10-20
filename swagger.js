@@ -6,8 +6,8 @@ const doc = {
     title: 'CSE 341 Final Project - API',
     description: 'CSE 341 Final Project for Tiffany Voorhees and Luke Briggs',
   },
-  host: 'localhost:3001',
-  schemes: ['http'],
+  host: 'https://three41-final.onrender.com',
+  schemes: ['https'],
 };
 
 const outputFile = './swagger.json';
