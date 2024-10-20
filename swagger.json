@@ -5,7 +5,7 @@
     "description": "CSE 341 Final Project for Tiffany Voorhees and Luke Briggs",
     "version": "1.0.0"
   },
-  "host": "https://three41-final.onrender.com",
+  "host": "three41-final.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

@@ -6,7 +6,7 @@ const doc = {
     title: 'CSE 341 Final Project - API',
     description: 'CSE 341 Final Project for Tiffany Voorhees and Luke Briggs',
   },
-  host: 'https://three41-final.onrender.com',
+  host: 'three41-final.onrender.com',
   schemes: ['https'],
 };
 
